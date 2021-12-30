@@ -1,18 +1,28 @@
 package Automation;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -24,13 +34,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class DemoAutomation {
 	
 	
+	private static final String Output = null;
+
 	public static WebDriver driver;
 	
 	public static String browser = "chrome";
 	
 	
 	@SuppressWarnings("deprecation")
-	public static void main (String args[]) throws InterruptedException {
+	public static void main (String args[]) throws InterruptedException, IOException {
 	
 	if ( browser.equals("chrome"))  {
 		WebDriverManager.chromedriver().setup();
@@ -296,6 +308,121 @@ public class DemoAutomation {
 //	
 //	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"mainContent\"]/div[1]/ul/li[3]/div[2]/div[1]/nav[2]/ul/li[1]/a"))).click();
 //	
+	
+	
+	
+	
+	//How to handle Web Tables (Rows and columns)
+//	driver.get("https://www2.asx.com.au/markets/trade-our-cash-market/todays-announcements");
+//	driver.manage().window().maximize();
+//	
+//	WebElement frame = driver.findElement(By.xpath("//*[@id=\"multi-column-0\"]/div/div/div/div/div/iframe"));
+//	driver.findElement(By.id("onetrust-accept-btn-handler")).click();
+//	driver.switchTo().frame(frame);
+//	
+//	
+//	List<WebElement>  rows = driver.findElements(By.xpath("//*[@id=\"content\"]/div/announcement_data/table/tbody/tr"));
+//	System.out.println(rows.size());
+//	int rowSize = rows.size();
+//	
+//	List<WebElement>  columns = driver.findElements(By.xpath("//*[@id=\"content\"]/div/announcement_data/table/tbody/tr[2]/td"));
+//	System.out.println(columns.size());
+//
+//	int colSize = columns.size();
+//	
+//	for (int i=2; i<= rowSize; i++) { //loops to iterate over rows
+//		for (int j=1; j<= colSize; j++) { //loop to iterate over columns
+//			System.out.print(driver.findElement(By.xpath("//*[@id=\"content\"]/div/announcement_data/table/tbody/tr[" + i + "]/td[" + j + "]")).getText()+ "  "); 
+//		}
+//		System.out.println();
+//	}
+//	
+	
+	
+	
+	
+	
+	
+//	//Perform operations using javascript executor
+//	driver.get("https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_alert");
+//	driver.manage().window().maximize();
+//	
+//	WebElement frame = driver.findElement(By.id("iframeResult"));
+//
+//	
+//	JavascriptExecutor jsExe = (JavascriptExecutor) driver;
+//	
+//	//Get Title through javascript executor
+//	String script = "document.getTitle;";
+//	String title = (String) jsExe.executeScript(script);
+//	System.out.println(title);
+//	
+//	
+//	//Click button thorugh JS Executor
+//	driver.switchTo().frame(frame);
+//	jsExe.executeScript("myFunction()");
+//	driver.switchTo().alert().accept();
+//	
+//	
+//	//Change border colours of button
+//	WebElement button = driver.findElement(By.xpath("/html/body/button"));
+//	jsExe.executeScript("arguments[0].style.border = '5px solid green'", button);
+//	
+//	//Scroll and navigate thorugh JS executor
+//	driver.navigate().to("https://www.w3schools.com/");
+//	WebElement certify = driver.findElement(By.xpath("//*[@id=\"bgcodeimg2\"]/div/a"));
+//	jsExe.executeScript("arguments[0].scrollIntoView(true);", certify);
+	
+	
+	
+	
+	
+	
+	
+	//How to take screenshot 
+//	driver.get("https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_alert");
+//	driver.manage().window().maximize();
+//	
+//	Date date = new Date();
+//	String fileNameWithDate = date.toString().replace(" ", "_").replace(":", "_");
+//	
+//	File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+//	FileUtils.copyFile(screenshot, new File(".//screenshot//"+fileNameWithDate+".png"));
+	
+
+	
+	//How to handle SSL Certificates
+	
+//		DesiredCapabilities dc = new DesiredCapabilities();
+////		dc.setAcceptInsecureCerts(true);
+//		dc.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
+//		dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+//		
+//		ChromeOptions chrop = new ChromeOptions();
+//		chrop.merge(dc);
+//	
+//		
+////		driver = new ChromeDriver(chrop);
+//		driver.get("https://expired.badssl.com/");
+//		driver.manage().window().maximize();
+//		
+		
+	
+	
+	
+	
+	//How to handle Authentication popups	
+//	String username = "admin";
+//	String password = "admin";
+//	
+//	driver.get("https://"+username+":"+password+"@the-internet.herokuapp.com/basic_auth");
+//	driver.manage().window().maximize();
+//	
+	
+	
+	
+	//How to read diles data from properties file
+
 	
 }
 }
